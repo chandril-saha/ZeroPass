@@ -26,8 +26,8 @@ ZeroPass is a completely decentralized, privacy-first Web3 ticketing platform bu
 This project is fully ready for Vercel deployment. (See the comprehensive `DEPLOYMENT_GUIDE.md` included in the repo for detailed, manual non-CLI uploading steps).
 
 ### 📜 Smart Contract Addresses
-*   **ZeroPass Logic Contract:** `0x8a5d4397bDCfbacE75da88bc866E2c25b7A411d1` (Flow Testnet)
-*   **Plonk Verifier:** `0x7FcAD3743decc7aE3BDC339d8BEEb153f3dA34E0` (Flow Testnet)
+*   **ZeroPass Logic Contract:** `0x6b2901391D196143C1b5BB970dD1cCCEd3BdeFb3` (Flow Testnet)
+*   **Plonk Verifier:** `0x6AB133d823C411Df632012a8C97bc98737917398` (Flow Testnet)
 
 ### 🧰 How to Run Locally
 1.  **Install dependencies:** `npm install`
