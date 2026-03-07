@@ -66,6 +66,7 @@ contract ZeroPass is ERC721, Ownable, ReentrancyGuard {
     mapping(uint256 => mapping(bytes32 => bool)) private eventTickets; // eventId => hash1 => has ticket
     mapping(bytes32 => uint256[]) public userEvents; // hash1 => eventIds
     mapping(uint256 => mapping(address => uint256)) public walletTicketCount; // eventId => wallet address => tickets bought
+    mapping(bytes32 => uint256) public loyaltyPoints; // hash1 => points balance
 
     // Events
     event EventCreated(
@@ -163,7 +164,8 @@ contract ZeroPass is ERC721, Ownable, ReentrancyGuard {
      */
     function purchaseTicket(
         bytes32 hash1,
-        uint256 eventId
+        uint256 eventId,
+        bool usePoints
     ) external payable nonReentrant returns (uint256) {
         Event storage eventDetails = events[eventId];
 
@@ -174,10 +176,25 @@ contract ZeroPass is ERC721, Ownable, ReentrancyGuard {
         if (block.timestamp >= eventDetails.endTime) revert EventAlreadyEnded();
         if (eventDetails.ticketsSold >= eventDetails.maxAttendees)
             revert EventSoldOut();
-        if (msg.value != eventDetails.ticketPrice) revert InsufficientPayment();
+
+        if (usePoints) {
+            require(
+                loyaltyPoints[hash1] >= 100,
+                "Insufficient Loyalty Points (100 required)"
+            );
+            require(msg.value == 0, "No payment required when using points");
+            loyaltyPoints[hash1] -= 100;
+        } else {
+            if (msg.value != eventDetails.ticketPrice)
+                revert InsufficientPayment();
+        }
+
         if (eventTickets[eventId][hash1])
             revert("Ticket already purchased for this identity");
-        require(walletTicketCount[eventId][msg.sender] < 4, "Limit of 4 tickets per wallet reached for this event");
+        require(
+            walletTicketCount[eventId][msg.sender] < 4,
+            "Limit of 4 tickets per wallet reached for this event"
+        );
 
         uint256 tokenId = _nextTokenId++;
         _safeMint(msg.sender, tokenId);
@@ -191,10 +208,12 @@ contract ZeroPass is ERC721, Ownable, ReentrancyGuard {
         eventDetails.ticketsSold++;
 
         // Transfer payment to event organizer
-        (bool sent, ) = payable(eventDetails.organizer).call{value: msg.value}(
-            ""
-        );
-        require(sent, "Failed to send payment to organizer");
+        if (!usePoints && msg.value > 0) {
+            (bool sent, ) = payable(eventDetails.organizer).call{
+                value: msg.value
+            }("");
+            require(sent, "Failed to send payment to organizer");
+        }
 
         emit TicketIssued(tokenId, eventId, hash1);
         return tokenId;
@@ -315,6 +334,7 @@ contract ZeroPass is ERC721, Ownable, ReentrancyGuard {
         require(verifier.verifyProof(a, b, c, input), "Invalid ZK Proof");
 
         isTicketUsed[hash2] = true;
+        loyaltyPoints[hash1] += 100; // Reward 100 loyalty points for verified attendance
         emit TicketBurned(0, eventId); // Emit dummy tokenId 0 for legacy frontend graph
         return true;
     }
