@@ -23,7 +23,7 @@ ZeroPass is a completely decentralized, privacy-first Web3 ticketing platform bu
 ## 🚀 Project Submission Details
 
 ### 🔗 Live Deployment
-This project is fully ready for Vercel deployment. (See the comprehensive `DEPLOYMENT_GUIDE.md` included in the repo for detailed, manual non-CLI uploading steps).
+https://zeropass-seven.vercel.app/
 
 ### 📜 Smart Contract Addresses
 *   **ZeroPass Logic Contract:** `0x6b2901391D196143C1b5BB970dD1cCCEd3BdeFb3` (Flow Testnet)
@@ -37,6 +37,7 @@ This project is fully ready for Vercel deployment. (See the comprehensive `DEPLO
 ---
 
 ## 🧑‍💻 Architecture Flow
+<img width="3157" height="2500" alt="image" src="https://github.com/user-attachments/assets/f4a38efb-72ba-437f-a570-35b05afed5c4" />
 
 ### 1. The Organizer
 Organizers connect their Web3 wallets to natively deploy new hackathons/events directly to the blockchain. They set prices (in FLOW), limits, and locations via a fluid frontend.
