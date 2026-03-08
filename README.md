@@ -37,7 +37,7 @@ https://zeropass-seven.vercel.app/
 ---
 
 ## 🧑‍💻 Architecture Flow
-<img width="3157" height="2500" alt="image" src="https://github.com/user-attachments/assets/f4a38efb-72ba-437f-a570-35b05afed5c4" />
+<img width="3157" height="2500" alt="image" src="https://github.com/user-attachments/assets/f4d9ac60-a05d-4af7-9d27-bd7c1ac05b0b" />
 
 ### 1. The Organizer
 Organizers connect their Web3 wallets to natively deploy new hackathons/events directly to the blockchain. They set prices (in FLOW), limits, and locations via a fluid frontend.
