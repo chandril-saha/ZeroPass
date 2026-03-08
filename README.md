@@ -27,7 +27,7 @@ https://zeropass-seven.vercel.app/
 
 ### 📜 Smart Contract Addresses
 *   **ZeroPass Logic Contract:** `0x6b2901391D196143C1b5BB970dD1cCCEd3BdeFb3` (Flow Testnet)
-*   **Plonk Verifier:** `0x6AB133d823C411Df632012a8C97bc98737917398` (Flow Testnet)
+*   **Verifier Contract:** `0x6AB133d823C411Df632012a8C97bc98737917398` (Flow Testnet)
 
 ### 🧰 How to Run Locally
 1.  **Install dependencies:** `npm install`
