@@ -4,6 +4,17 @@ ZeroPass is a completely decentralized, privacy-first Web3 ticketing platform bu
 
 ---
 
+## 🎯 The Problem We Solve
+
+The modern event ticketing industry is broken. It suffers from three catastrophic failures:
+1. **Aggressive Data Harvesting:** Platforms force users to surrender their name, email, phone number, and wallet addresses just to buy a ticket. This data is routinely sold or breached.
+2. **High Platform Fees:** Most widely used platforms charge significant amount of extra platform fees for purchasing tickets 
+3. **Counterfeit and Easily Shareable Tickets:** Traditional QR codes are easily screenshot and duplicated, leading to chaos at the door when multiple people claim the same seat.
+
+**ZeroPass** entirely eradicates these issues. By tying a single cryptographic hash derived from biometric data to a non-transferrable NFT, we make the event hosting and attending process smooth. Because verification happens via Zero-Knowledge proofs locally on the user's device, the organizer never receives a single piece of personally identifiable information. Being built on Flow EVM Testnet (a layer-2 EVM Blockchain), platform fees (gas fees) are negligible.
+
+---
+
 ## ✨ Core Features
 
 *   **🤫 Total Anonymity (`Circom` & `snarkjs`):** Attendees derive a cryptographic `hash` locally in their browser. They purchase tickets using this hash, and generate ZK-proofs to enter events. Organizers mathematically cryptovariable verify the ticket without knowing who they just scanned.
