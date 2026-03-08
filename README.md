@@ -36,7 +36,7 @@ The modern event ticketing industry is broken. It suffers from three catastrophi
 ### 🔗 Live Deployment
 https://zeropass-seven.vercel.app/
 
-### See it in Action:
+### See it in Action (Demo Video):
 https://youtu.be/BEu7opoX-mQ?si=fHHCJ2EksmMssWzG
 
 ### 📜 Smart Contract Addresses
